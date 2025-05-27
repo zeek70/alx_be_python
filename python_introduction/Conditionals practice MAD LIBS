@@ -1,0 +1,19 @@
+name=input("Give your character a name ")
+job = input("Give your character a job")
+verb = input("what is he doing!")
+adjective = input ("whats he like ?")
+age = int(input(("how long has he been doing this?")))
+if job == "serial killer":
+    print("what a dangerous job, Anyway...")
+    background="feared b many and known only to the shadows"
+else:
+    print("thats a regular job, but its cool")
+    background = "in a respectable career!"
+
+story = f"""
+Meet {name}, a {adjective} soul who works as a {job}.
+For the past {age} years, {name} has been {verb} daily — it's like second nature now.
+Known as someone who is {background}, {name} walks through life with a quiet confidence.
+One can only wonder what tomorrow holds for such a character...
+"""
+print(story)
