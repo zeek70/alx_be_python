@@ -1,28 +1,23 @@
 class BankAccount:
-    def __init__(self, balance_file='balance.txt'):
-        self.balance_file = balance_file
-        try:
-            with open(self.balance_file, 'r') as f:
-                self.__account_balance = float(f.read())
-        except FileNotFoundError:
-            self.__account_balance = 100  # Default starting balance
-            self._save_balance()
-
-    def _save_balance(self):
-        with open(self.balance_file, 'w') as f:
-            f.write(str(self.__account_balance))
+    def __init__(self, initial_balance=0):
+        """Initialize the bank account with an optional initial balance."""
+        self.__account_balance = initial_balance  # Encapsulated attribute
 
     def deposit(self, amount):
+        """Add the specified amount to the account balance."""
         if amount > 0:
             self.__account_balance += amount
-            self._save_balance()
 
     def withdraw(self, amount):
+        """
+        Withdraw the specified amount if sufficient funds are available.
+        Returns True if withdrawal is successful, False otherwise.
+        """
         if 0 < amount <= self.__account_balance:
             self.__account_balance -= amount
-            self._save_balance()
             return True
         return False
 
-    def get_balance(self):
-        return self.__account_balance
+    def display_balance(self):
+        """Print the current account balance."""
+        print(f"Current Balance: ${self.__account_balance}")
