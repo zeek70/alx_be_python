@@ -5,7 +5,7 @@ class BankAccount:
             with open(self.balance_file, 'r') as f:
                 self.__account_balance = float(f.read())
         except FileNotFoundError:
-            self.__account_balance = 100  # default starting balance
+            self.__account_balance = 100  # Default starting balance
             self._save_balance()
 
     def _save_balance(self):
@@ -24,8 +24,5 @@ class BankAccount:
             return True
         return False
 
-    def display_balance(self):
-        print(f"Current Balance: ${self.__account_balance}")
-
-
-        
+    def get_balance(self):
+        return self.__account_balance
