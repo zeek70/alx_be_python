@@ -1,12 +1,9 @@
-
+# library_system.py
 
 class Book:
     def __init__(self, title, author):
         self.title = title
         self.author = author
-
-    def get_details(self):
-        return f"Book: {self.title} by {self.author}"
 
 
 class EBook(Book):
@@ -14,17 +11,11 @@ class EBook(Book):
         super().__init__(title, author)
         self.file_size = file_size
 
-    def get_details(self):
-        return f"EBook: {self.title} by {self.author}, File Size: {self.file_size}KB"
-
 
 class PrintBook(Book):
     def __init__(self, title, author, page_count):
         super().__init__(title, author)
         self.page_count = page_count
-
-    def get_details(self):
-        return f"PrintBook: {self.title} by {self.author}, Page Count: {self.page_count}"
 
 
 class Library:
@@ -36,4 +27,9 @@ class Library:
 
     def list_books(self):
         for book in self.books:
-            print(book.get_details())
+            if isinstance(book, EBook):
+                print(f"EBook: {book.title} by {book.author}, File Size: {book.file_size}KB")
+            elif isinstance(book, PrintBook):
+                print(f"PrintBook: {book.title} by {book.author}, Page Count: {book.page_count}")
+            elif isinstance(book, Book):
+                print(f"Book: {book.title} by {book.author}")
